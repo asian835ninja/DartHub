@@ -1,0 +1,39 @@
+<!DOCTYPE = html>
+ 
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script> 
+</head>
+ 
+<body>
+ 
+<form class="login-form">
+  <h2>Log In</h2>
+  <div class="error" style="display:none"></div>
+  <input type="text" id="login-username" placeholder="Username" />
+  <input type="password" id="login-password" placeholder="Password" />
+  <input type="button" value="Login"onclick="login()"/>
+</form>
+ 
+<script>
+Parse.initialize("YcTYwcaQefujgEoFjng9HQwmfNYKsS2WV0Yt5Ai2", "BLKdqbJIx4NlinN3KR4aP4nPUKep9T65sQ9RYMWo");
+ 
+  function login(){
+    var user = Parse.User.logIn(document.getElementById("login-username").value, document.getElementById("login-password").value, {
+        success: function(user) { 
+        console.log("Saved!");
+        window.location = "http://www.darthub.me"
+        },
+        error: function(user, error) {
+           window.alert("Incorrect login. Please try again.");
+           console.log(error.message);
+        }
+    });
+  }
+</script>
+ 
+</body>
+ 
+</html>
